@@ -3,32 +3,33 @@
 #### Arquitectura de Diseño
 
 1. **Componentes Principales**  
-   - **Frontend**: Interfaz de usuario donde los administradores y empleados pueden crear, configurar y gestionar chatbots.  
-   - **Backend**: Servidor que manipula la lógica de negocio, gestiona la lógica de los chatbots y se comunica con los modelos de procesamiento de lenguaje natural (NLP).  
-   - **Base de Datos**: Almacenamiento de usuarios, configuraciones de chatbots, historiales de conversación y métricas.  
+   - **Frontend**: Aplicación para que los usuarios creen y gestionen sus chatbots. Usará tecnologías como HTML, CSS y JavaScript (React o Vue).
+   - **Backend**: Servidor que maneja la lógica de negocio, la autenticación de usuarios y la comunicación con la base de datos. Puede estar construido con Node.js y Express.
+   - **Base de Datos**: Almacenamiento de datos de usuarios, chatbots y sus interacciones, utilizando PostgreSQL o MongoDB.
 
 2. **Patrón Arquitectónico**  
-   - **Microservicios**: Permite la independencia y escalabilidad de cada componente del sistema.
+   - **Microservicios**: Permiten la independencia y escalabilidad de cada componente del sistema.
 
 3. **Interacciones y Comunicación**  
-   - **REST APIs** para la interacción entre el frontend y el backend.  
-   - **Colas de mensajes** para la comunicación entre microservicios.
+   - **APIs REST** para la comunicación entre frontend y backend.  
+   - **WebSockets** para comunicación en tiempo real con los chatbots.
 
 4. **Modelo de Datos**  
-   - **Usuario**: `id`, `nombre`, `email`, `contraseña`, `rol`  
-   - **Chatbot**: `id`, `nombre`, `configuración`, `tipo`, `estado`  
-   - **Mensaje**: `id`, `contenido`, `fecha_envio`, `tipo`
+   - **Usuario**: `id`, `nombre`, `correo`, `clave`, `fecha_creacion`  
+   - **Chatbot**: `id`, `nombre`, `descripcion`, `usuario_id`  
+   - **Interacción**: `id`, `chatbot_id`, `usuario_id`, `mensaje`, `fecha`
 
 5. **Escalabilidad**  
-   - Escalado independiente de microservicios y uso de contenedores.
+   - Escalado horizontal con balanceadores de carga y contenedores.
 
 6. **Seguridad**  
-   - Implementación de **OAuth2** para autenticación y políticas de autorización.
+   - Uso de **JSON Web Tokens (JWT)** para autenticación y autenticación de dos factores (2FA).
 
 7. **Dependencias**  
-   - **Frontend**: React.js  
-   - **Backend**: Node.js, Express.js, TensorFlow, SpaCy  
-   - **Base de datos**: MongoDB
+   - **Frontend**: React/Vue, Axios, Bootstrap/Tailwind CSS.  
+   - **Backend**: Node.js, Express, Sequelize/Mongoose.  
+   - **Base de datos**: PostgreSQL/MongoDB.
+   - **Otras herramientas**: Docker, GitHub Actions para CI/CD.
 
 8. **Consideraciones Adicionales**  
-   - Monitoreo del rendimiento y auditorías de seguridad.
+   - La plataforma debe ser responsiva y debe contar con un sistema de monitoreo de rendimiento.
